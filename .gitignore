@@ -1,0 +1,6 @@
+UnityRobotProj/library/*
+*.sln
+*.csproj
+*.userprefs
+UnityRobotProj/UnityRobotProj_Data/*
+UnityRobotProj/Temp/*
