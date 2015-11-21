@@ -4,14 +4,14 @@ using System.Collections;
 /// <summary>
 /// This class contains all methods regarding chaning levels.
 /// </summary>
-public static class Transitions : MonoBehaviour {
+public static class Transitions {
 
 	/// <summary>
 	/// Saves the attribute to the given key.
 	/// </summary>
 	/// <param name="key">Key.</param>
 	/// <param name="value">Value.</param>
-	public void SaveAttribute(string key, float value) {
+	public static void SaveAttribute(string key, float value) {
 		PlayerPrefs.SetFloat (key, value);
 	}
 
@@ -20,7 +20,7 @@ public static class Transitions : MonoBehaviour {
 	/// </summary>
 	/// <returns>The attibute.</returns>
 	/// <param name="key">Key.</param>
-	public float GetAttibute(string key) {
+	public static float GetAttibute(string key) {
 		return PlayerPrefs.GetFloat (key);
 	}
 
@@ -28,7 +28,7 @@ public static class Transitions : MonoBehaviour {
 	/// Loads the level given the name.
 	/// </summary>
 	/// <param name="toLevel">To level.</param>
-	public void LoadLevel(string toLevel) {
+	public static void LoadLevel(string toLevel) {
 		Application.LoadLevel (toLevel);
 	}
 }
