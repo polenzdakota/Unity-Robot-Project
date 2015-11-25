@@ -15,7 +15,7 @@ public class Robot : MonoBehaviour, IRobot {
 
 	// Use this for initialization
 	void Start () {
-		currentPosition.Set (initialPosition);
+		currentPosition = initialPosition;
 	}
 	
 	// Update is called once per frame
@@ -29,9 +29,9 @@ public class Robot : MonoBehaviour, IRobot {
 	/// <returns>true</returns>
 	/// <c>false</c>
 	public bool MoveForward() {
-		float nextX = (currentPosition.x + moveDistance) * dx;
-		float nextY = (currentPosition + moveDistance) * dy;
-		currentPosition.Set (nextX, nextY);
+		float nextX = currentPosition.x + (dx * moveDistance);
+		float nextY = currentPosition.y + (dy * moveDistance);
+		currentPosition.Set (nextX, nextY, 0);
 
 		//TODO add check to see if the next position is valid.
 		return true;
@@ -44,7 +44,7 @@ public class Robot : MonoBehaviour, IRobot {
 		int tmp = dy;
 		dy = -dx;
 		dx = tmp;
-		//TODO add rotation for the robot in the scene.
+		//TODO add rotation for the robot in the scene using quaterion.
 	}
 
 	/// <summary>
@@ -54,7 +54,7 @@ public class Robot : MonoBehaviour, IRobot {
 		int tmp = dx;
 		dx = -dy;
 		dy = tmp;
-		//TODO add rotation for the robot in the scene.
+		//TODO add rotation for the robot in the scene using quaterion.
 	}
 
 	/// <summary>
@@ -64,9 +64,11 @@ public class Robot : MonoBehaviour, IRobot {
 	/// <c>false</c>
 	/// <param name="pos">Position.</param>
 	public bool MoveToPosition(Vector3 pos) {
-		currentPosition.Set (pos);
-
-		//TODO add check to see if position is valid.
+		Vector3 vectorCheck = pos;
+		if (!GameBoard.PositionIsValid (vectorCheck)) {
+			return false;
+		}
+		currentPosition = pos;
 		return true;
 	}
 }

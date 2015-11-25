@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameBoard : MonoBehaviour {
+public static class GameBoard {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public static bool PositionIsValid(Vector3 pos) {
+		//TODO currently unimplemented
+		return true;
 	}
 }
