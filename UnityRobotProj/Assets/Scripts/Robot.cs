@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Class for the main robot.
+/// </summary>
 public class Robot : MonoBehaviour, IRobot {
 
 	public Vector3 initialPosition = new Vector3(0,0,0);
