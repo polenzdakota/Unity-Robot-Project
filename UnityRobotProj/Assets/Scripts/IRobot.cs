@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Interface for commandable robotsS.
+/// </summary>
 public interface IRobot {
 
 	/// <summary>

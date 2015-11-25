@@ -21,6 +21,28 @@ public class Command : MonoBehaviour {
 	}
 
 	/// <summary>
+	/// Executes the actions in the queue.
+	/// </summary>
+	public void ExecuteQueue() {
+		foreach (IActions action in actions) {
+			bool valid = action.InvokeAction();
+			if (!valid) {
+				TriggerFail();
+			}
+		}
+		if (!GameBoard.GetCompletion()) {
+			TriggerFail();
+		}
+	}
+
+	/// <summary>
+	/// Triggers the fail state.
+	/// </summary>
+	public void TriggerFail() {
+		//TODO do stuff.
+	}
+
+	/// <summary>
 	/// Gets the next action. Returns null if the queue is empty
 	/// </summary>
 	/// <returns>The next action.</returns>
