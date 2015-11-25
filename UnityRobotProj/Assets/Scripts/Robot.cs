@@ -31,9 +31,11 @@ public class Robot : MonoBehaviour, IRobot {
 	public bool MoveForward() {
 		float nextX = currentPosition.x + (dx * moveDistance);
 		float nextY = currentPosition.y + (dy * moveDistance);
+		Vector3 vectorCheck = new Vector3 (nextX, nextY, 0);
+		if (!GameBoard.PositionIsValid (vectorCheck)) {
+			return false;
+		}
 		currentPosition.Set (nextX, nextY, 0);
-
-		//TODO add check to see if the next position is valid.
 		return true;
 	}
 
