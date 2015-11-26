@@ -22,6 +22,15 @@ public class Command : MonoBehaviour {
 	}
 
 	/// <summary>
+	/// Gets the robot from the given index.
+	/// </summary>
+	/// <returns>The robot.</returns>
+	/// <param name="index">Index.</param>
+	public IRobot GetRobot(int index) {
+		return robots [index];
+	}
+
+	/// <summary>
 	/// Executes the actions in the action list.
 	/// </summary>
 	public void ExecuteActions() {
@@ -48,10 +57,8 @@ public class Command : MonoBehaviour {
 	/// </summary>
 	/// <returns><c>true</c>, if robot was added, <c>false</c> otherwise.</returns>
 	/// <param name="robot">Robot.</param>
-	public bool AddRobot(IRobot robot) {
-		//TODO not sure if this works right
+	public void AddRobot(IRobot robot) {
 		robots.Add (robot);
-		return true;
 	}
 
 	/// <summary>
