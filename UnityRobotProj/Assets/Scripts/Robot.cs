@@ -76,4 +76,12 @@ public class Robot : MonoBehaviour, IRobot {
 		currentPosition = pos;
 		return true;
 	}
+
+	/// <summary>
+	/// Gets the position.
+	/// </summary>
+	/// <returns>The position.</returns>
+	public Vector3 GetPosition() {
+		return currentPosition;
+	}
 }
