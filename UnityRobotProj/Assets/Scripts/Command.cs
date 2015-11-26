@@ -48,9 +48,10 @@ public class Command : MonoBehaviour {
 	/// </summary>
 	/// <returns><c>true</c>, if robot was added, <c>false</c> otherwise.</returns>
 	/// <param name="robot">Robot.</param>
-	public bool AddRobot(GameObject robot) {
+	public bool AddRobot(IRobot robot) {
 		//TODO not sure if this works right
-		return robots.Add (robot.GetComponent<IRobot>);
+		robots.Add (robot);
+		return true;
 	}
 
 	/// <summary>
@@ -70,7 +71,7 @@ public class Command : MonoBehaviour {
 	/// </summary>
 	/// <returns><c>true</c>, if action was removed, <c>false</c> otherwise.</returns>
 	/// <param name="index">Index.</param>
-	public bool RemoveAction(int index) {
-		return actions.Remove (index);
+	public void RemoveAction(int index) {
+		actions.RemoveAt (index);
 	}
 }
