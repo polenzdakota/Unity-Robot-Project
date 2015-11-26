@@ -7,6 +7,7 @@ using System.Collections.Generic;
 /// </summary>
 public class Command : MonoBehaviour {
 	private List<IActions> actions;
+	private List<IRobot> robots;
 
 	void Start () {
 		actions = new List<IActions> ();
@@ -40,6 +41,16 @@ public class Command : MonoBehaviour {
 	/// </summary>
 	public void TriggerFail() {
 		//TODO do stuff.
+	}
+
+	/// <summary>
+	/// Adds the robot.
+	/// </summary>
+	/// <returns><c>true</c>, if robot was added, <c>false</c> otherwise.</returns>
+	/// <param name="robot">Robot.</param>
+	public bool AddRobot(GameObject robot) {
+		//TODO not sure if this works right
+		return robots.Add (robot.GetComponent<IRobot>);
 	}
 
 	/// <summary>
