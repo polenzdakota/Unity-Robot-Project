@@ -39,6 +39,7 @@ public class Robot : MonoBehaviour, IRobot {
 			return false;
 		}
 		currentPosition.Set (nextX, nextY, 0);
+		print (currentPosition);
 		return true;
 	}
 

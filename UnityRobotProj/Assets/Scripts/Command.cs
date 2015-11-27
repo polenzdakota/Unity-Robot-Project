@@ -11,6 +11,14 @@ public class Command : MonoBehaviour {
 
 	void Start () {
 		actions = new List<IActions> ();
+
+		//Test data
+		IActions forward = new MainMoveForward ();
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+
+		ExecuteActions ();
 	}
 
 	/// <summary>
