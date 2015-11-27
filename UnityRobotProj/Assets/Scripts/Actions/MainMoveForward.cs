@@ -11,6 +11,7 @@ public class MainMoveForward : MonoBehaviour, IActions {
 	// Use this for initialization
 	void Start () {
 		initialPos = mainRobot.GetComponent<Robot> ().GetPosition ();
+		mainRobot = GameObject.Find ("mainRobotTest");
 	}
 
 	/// <summary>

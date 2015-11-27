@@ -13,7 +13,7 @@ public class Command : MonoBehaviour {
 		actions = new List<IActions> ();
 
 		//Test data
-		IActions forward = new MainMoveForward ();
+		MainMoveForward forward = new MainMoveForward();
 		AddAction (forward);
 		AddAction (forward);
 		AddAction (forward);

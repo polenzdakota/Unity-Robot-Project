@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MainRotateRight : MonoBehaviour, IActions {
-	private GameObject mainRobot;
+	public GameObject mainRobot;
 
 	/// <summary>
 	/// Invokes the action of the command.
