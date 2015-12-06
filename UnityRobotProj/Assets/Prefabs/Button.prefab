@@ -80,7 +80,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Action 1
 --- !u!114 &11468288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,6 +258,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_PreferredHeight
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Text
+      value: Action 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

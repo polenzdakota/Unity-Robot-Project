@@ -18,8 +18,9 @@ public class UIControl : MonoBehaviour {
 		Vector3 dumb = new Vector3 (0, 0, 0);
 		Quaternion stuff = new Quaternion (0,0,0,0);
 		GameObject newButton = Instantiate (TestButton, dumb, stuff) as GameObject;
-		print (newButton.transform.position.x);
 		newButton.transform.SetParent (actionPanel.transform);
+
+		newButton.GetComponentInChildren<Text>().text = strAction;
 
 		//TODO options for multiple buttons. We can use the string paran to 
 		//     Differentiate between the actions.
