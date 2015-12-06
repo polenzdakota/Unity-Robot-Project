@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /// <summary>
 /// Controls buttons and positions on the UI.
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 public class UIControl : MonoBehaviour {
 	public GameObject actionPanel;
 	public GameObject TestButton;
+	private List<GameObject> queuedActions = new List<GameObject>();
 
 	/// <summary>
 	/// Action done when a button is pressed.
@@ -21,9 +23,22 @@ public class UIControl : MonoBehaviour {
 		newButton.transform.SetParent (actionPanel.transform);
 
 		newButton.GetComponentInChildren<Text>().text = strAction;
+		queuedActions.Add (newButton);
 
 		//TODO options for multiple buttons. We can use the string paran to 
 		//     Differentiate between the actions.
+	}
+
+	public void ClearActions() {
+		//TODO clear actions from list in Command
+		foreach (GameObject button in queuedActions) {
+
+			//Horrible code but I don't care
+			if (button != null) {
+				button.GetComponent<ActionButton>().OnPress();
+			}
+		}
+
 	}
 
 	/// <summary>
