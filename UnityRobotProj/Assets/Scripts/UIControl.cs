@@ -3,13 +3,12 @@ using System.Collections;
 
 public class UIControl : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+
+	public void ButtonPress(string strAction) {
+		//TODO
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void AddActionToPanel(IActions action) {
+		//TODO
 	}
 }
