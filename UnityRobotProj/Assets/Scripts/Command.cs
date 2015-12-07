@@ -6,19 +6,38 @@ using System.Collections.Generic;
 /// Contains a queue of actions picked by the player
 /// </summary>
 public class Command : MonoBehaviour {
+	public GameObject currentRobot;
 	private List<IActions> actions;
 	private List<IRobot> robots;
+	//public List<Robot> robots;
 
 	void Start () {
 		actions = new List<IActions> ();
+		currentRobot = GameObject.FindGameObjectWithTag ("Player");
 
 		//Test data
-		MainMoveForward forward = new MainMoveForward();
+		MainMoveForward forward = currentRobot.GetComponent<MainMoveForward>();
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
 		AddAction (forward);
 		AddAction (forward);
 		AddAction (forward);
 
+
+
 		ExecuteActions ();
+
+
 	}
 
 	/// <summary>

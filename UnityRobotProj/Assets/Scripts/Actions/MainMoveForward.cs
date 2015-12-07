@@ -5,13 +5,17 @@ using System.Collections;
 /// Moves the main robot forward.
 /// </summary>
 public class MainMoveForward : MonoBehaviour, IActions {
-	public GameObject mainRobot;
+	//public GameObject mainRobot;
+	private GameObject mainRobot;
 	private Vector3 initialPos;
 
 	// Use this for initialization
 	void Start () {
+		//mainRobot = GameObject.FindGameObjectWithTag ("Player");
+		mainRobot = GameObject.FindGameObjectWithTag ("Player");//GameObject.Find ("mainRobotTest");
+		Debug.Log (mainRobot.tag);
 		initialPos = mainRobot.GetComponent<Robot> ().GetPosition ();
-		mainRobot = GameObject.Find ("mainRobotTest");
+		Debug.Log (initialPos);
 	}
 
 	/// <summary>
@@ -20,6 +24,7 @@ public class MainMoveForward : MonoBehaviour, IActions {
 	/// <returns>true</returns>
 	/// <c>false</c>
 	public bool InvokeAction() {
+		//Debug.Log (mainRobot.GetComponent<Robot> ().MoveForward ());
 		return mainRobot.GetComponent<Robot> ().MoveForward ();
 	}
 

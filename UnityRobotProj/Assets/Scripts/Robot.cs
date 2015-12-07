@@ -4,10 +4,11 @@ using System.Collections;
 /// <summary>
 /// Class for the main robot.
 /// </summary>
+/// Don't need to use quaternion 
 public class Robot : MonoBehaviour, IRobot {
-
-	public Vector3 initialPosition = new Vector3(0,0,0);
-	public float moveDistance = 10;
+	public GameObject playerPosition;
+	public Vector3 initialPosition;// = new Vector3(0,0,0);
+	public float moveDistance = 100;
 	private Vector3 currentPosition;
 
 	//Dx and Dy indicate the direction the robot is facing
@@ -18,7 +19,7 @@ public class Robot : MonoBehaviour, IRobot {
 
 	// Use this for initialization
 	void Start () {
-		currentPosition = initialPosition;
+		currentPosition = playerPosition.transform.position;//initialPosition;
 	}
 	
 	// Update is called once per frame
@@ -38,8 +39,12 @@ public class Robot : MonoBehaviour, IRobot {
 		if (!GameBoard.PositionIsValid (vectorCheck)) {
 			return false;
 		}
+		float speed = 10.0f;
+		float step = speed * Time.deltaTime;
 		currentPosition.Set (nextX, nextY, 0);
+		transform.position = Vector3.MoveTowards(transform.position, currentPosition, step);
 		print (currentPosition);
+
 		return true;
 	}
 
