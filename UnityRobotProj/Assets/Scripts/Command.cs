@@ -30,8 +30,6 @@ public class Command : MonoBehaviour {
 		AddAction (forward);
 		AddAction (forward);
 		AddAction (forward);
-		AddAction (forward);
-		AddAction (forward);
 
 
 
