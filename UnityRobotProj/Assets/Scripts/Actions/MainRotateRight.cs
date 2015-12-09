@@ -2,8 +2,16 @@
 using System.Collections;
 
 public class MainRotateRight : MonoBehaviour, IActions {
-	public GameObject mainRobot;
+	private GameObject mainRobot;
+	private int[] initialRotation; 
 
+	// Use this for initialization
+	void Start () {
+		//mainRobot = GameObject.FindGameObjectWithTag ("Player");
+		mainRobot = GameObject.FindGameObjectWithTag ("Player");//GameObject.Find ("mainRobotTest");
+		Debug.Log (mainRobot.tag);
+		initialRotation = mainRobot.GetComponent<Robot> ().GetRotation ();
+	}
 	/// <summary>
 	/// Invokes the action of the command.
 	/// </summary>
@@ -18,6 +26,6 @@ public class MainRotateRight : MonoBehaviour, IActions {
 	/// Undos the action.
 	/// </summary>
 	public void UndoAction() {
-		mainRobot.GetComponent<Robot> ().RotateLeft ();
+		mainRobot.GetComponent<Robot> ().SetRotation (initialRotation);
 	}
 }

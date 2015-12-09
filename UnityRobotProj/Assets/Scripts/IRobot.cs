@@ -29,4 +29,15 @@ public interface IRobot {
 	/// <param name="pos">Position.</param>
 	bool MoveToPosition(Vector3 pos);
 
+	/// <summary>
+	/// Gets the rotation.
+	/// </summary>
+	/// <returns>The rotation.</returns>
+	int[] GetRotation();
+
+	/// <summary>
+	/// Sets the rotation.
+	/// </summary>
+	void SetRotation();
+
 }

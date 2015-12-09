@@ -90,4 +90,17 @@ public class Robot : MonoBehaviour, IRobot {
 	public Vector3 GetPosition() {
 		return currentPosition;
 	}
+
+	public int[] GetRotation() {
+		return new int[2] {dx, dy};
+	}
+
+	/// <summary>
+	/// Sets the rotation.
+	/// </summary>
+	/// <param name="rotation">Rotation.</param>
+	public void SetRotation(int[] rotation) {
+		dx = rotation [0];
+		dy = rotation [1];
+	}
 }
