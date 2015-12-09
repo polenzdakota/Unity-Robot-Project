@@ -38,6 +38,6 @@ public interface IRobot {
 	/// <summary>
 	/// Sets the rotation.
 	/// </summary>
-	void SetRotation();
+	void SetRotation(int[] rotation);
 
 }
