@@ -89,6 +89,7 @@ public class Robot : MonoBehaviour, IRobot {
 		dx = 1;
 		dy = 0;
 		targetPosition = initialPosition;
+		changeSprite ();
 
 	}
 
