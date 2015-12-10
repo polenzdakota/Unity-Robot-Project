@@ -74,6 +74,7 @@ public class UIControl : MonoBehaviour {
 		ClearActions ();
 		currentRobot.GetComponent<Robot> ().SetInitialPosition ();
 		inPlay = false;
+		Application.LoadLevel(Application.loadedLevel);
 	}
 
 	public void ClearActions() {
