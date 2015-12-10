@@ -10,6 +10,7 @@ public class Robot : MonoBehaviour, IRobot {
 	public Vector3 initialPosition;// = new Vector3(0,0,0);
 	public float moveDistance = 1f;
 	private Vector3 currentPosition;
+	private Vector3 nextPositionToGo;
 
 	//Dx and Dy indicate the direction the robot is facing
 	//With dx = 1 and dy = 0 the robot is facing right and
@@ -25,6 +26,7 @@ public class Robot : MonoBehaviour, IRobot {
 	
 	// Update is called once per frame
 	void Update () {
+
 	}
 
 	/// <summary>

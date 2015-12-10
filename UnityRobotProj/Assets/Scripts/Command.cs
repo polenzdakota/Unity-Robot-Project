@@ -18,7 +18,7 @@ public class Command : MonoBehaviour {
 		currentRobot = GameObject.FindGameObjectWithTag ("Player");
 
 		//Test data
-		MainMoveForward forward = currentRobot.GetComponent<MainMoveForward>();
+		/*MainMoveForward forward = currentRobot.GetComponent<MainMoveForward>();
 		AddAction (forward);
 
 		/// Now the robot should move left
@@ -53,10 +53,10 @@ public class Command : MonoBehaviour {
 		AddAction (forward);
 		AddAction (forward);
 		AddAction (forward);
-
+	
 		//executes actions
 		ExecuteActions ();
-
+		*/
 	}
 	
 	/// <summary>
