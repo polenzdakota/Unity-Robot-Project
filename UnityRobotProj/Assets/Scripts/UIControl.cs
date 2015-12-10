@@ -19,9 +19,14 @@ public class UIControl : MonoBehaviour {
 		inPlay = false;
 	}
 
-	void update() {
+	void Update() {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit();
+		}
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			print ("space!");
+			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
 
