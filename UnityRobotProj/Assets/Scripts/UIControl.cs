@@ -19,9 +19,14 @@ public class UIControl : MonoBehaviour {
 		inPlay = false;
 	}
 
-	void update() {
+	void Update() {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit();
+		}
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			print ("space!");
+			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
 
@@ -69,6 +74,7 @@ public class UIControl : MonoBehaviour {
 		ClearActions ();
 		currentRobot.GetComponent<Robot> ().SetInitialPosition ();
 		inPlay = false;
+		Application.LoadLevel(Application.loadedLevel);
 	}
 
 	public void ClearActions() {

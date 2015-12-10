@@ -38,7 +38,8 @@ public class Robot : MonoBehaviour, IRobot {
 	void Update () {
 		MoveTowardsTarget ();
 	}
-	private bool GetCollision(){
+
+	public bool GetCollision(){
 		return collision;
 
 	}
@@ -73,6 +74,18 @@ public class Robot : MonoBehaviour, IRobot {
 			print ("Collision hit!");
 			//Destroy(col.gameObject);
 			collision = true;
+		}
+		if(col.gameObject.tag == "LoadLevel1")
+		{
+			print ("Level Completed");
+			//Destroy(col.gameObject);
+			Application.LoadLevel("RealLevel1");
+		}
+		if(col.gameObject.tag == "LoadLevel2")
+		{
+			print ("Level Completed");
+			//Destroy(col.gameObject);
+			Application.LoadLevel("Level 2");
 		}
 		if(col.gameObject.tag == "Win")
 		{
