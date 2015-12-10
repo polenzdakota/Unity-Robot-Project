@@ -51,6 +51,11 @@ public class UIControl : MonoBehaviour {
 		return queuedActions;
 	}
 
+	public void Restart() {
+		ClearActions ();
+		currentRobot.GetComponent<Robot> ().SetInitialPosition ();
+	}
+
 	public void ClearActions() {
 		//TODO clear actions from list in Command
 		command.GetComponent<Command> ().ClearActions ();

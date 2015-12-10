@@ -7,10 +7,10 @@ using System.Collections;
 /// Don't need to use quaternion 
 public class Robot : MonoBehaviour, IRobot {
 	public GameObject playerPosition;
-	public Vector3 initialPosition;// = new Vector3(0,0,0);
+	public static Vector3 initialPosition;// = new Vector3(0,0,0);
 	public float moveDistance = 1f;
-	private Vector3 currentPosition;
-	private Vector3 nextPositionToGo;
+	private static Vector3 currentPosition;
+	private static Vector3 nextPositionToGo;
 
 	//Dx and Dy indicate the direction the robot is facing
 	//With dx = 1 and dy = 0 the robot is facing right and
@@ -22,11 +22,21 @@ public class Robot : MonoBehaviour, IRobot {
 	// Use this for initialization
 	void Start () {
 		currentPosition = playerPosition.transform.position;//initialPosition;
+		initialPosition = playerPosition.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	public void SetInitialPosition() {
+		transform.position = initialPosition;
+
+		//Sets initial dx and dy
+		dx = 1;
+		dy = 0;
+		print ("dy = " + dy);
 	}
 
 	/// <summary>

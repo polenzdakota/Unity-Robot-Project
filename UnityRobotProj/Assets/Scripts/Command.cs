@@ -123,6 +123,7 @@ public class Command : MonoBehaviour {
 	}
 
 	public void ClearActions() {
+		actions.Clear();
 	}
 
 	/// <summary>
