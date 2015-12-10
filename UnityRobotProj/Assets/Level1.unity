@@ -735,6 +735,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 191422, guid: b2a9a20516742bd45b7f9e9f3fbed228, type: 2}
+      propertyPath: m_Name
+      value: Win Cube
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2a9a20516742bd45b7f9e9f3fbed228, type: 2}
   m_IsPrefabParent: 0
