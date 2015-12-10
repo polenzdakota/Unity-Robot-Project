@@ -12,6 +12,80 @@ public class Command : MonoBehaviour {
 	//public List<Robot> robots;
 	private GameObject eventSystem;
 
+<<<<<<< Updated upstream
+=======
+	void Start () {
+		actions = new List<IActions> ();
+		currentRobot = GameObject.FindGameObjectWithTag ("Player");
+
+		//Test data
+		MainMoveForward forward = currentRobot.GetComponent<MainMoveForward>();
+		AddAction (forward);
+		//AddAction (forward);
+		//AddAction (forward);
+		/*AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);*/
+
+		/// Now the robot should move left
+		MainRotateRight rotateright = currentRobot.GetComponent<MainRotateRight> ();
+		AddAction (rotateright);
+		AddAction (rotateright);
+		AddAction (forward); 
+		AddAction (forward); 
+		AddAction (forward); 
+		AddAction (forward);
+
+		//Now the robot should move right
+		MainRotateLeft rotateleft = currentRobot.GetComponent<MainRotateLeft> ();
+		AddAction (rotateleft);
+		AddAction (rotateleft);
+		AddAction (forward); 
+		AddAction (forward); 
+		AddAction (forward);
+		AddAction (forward);
+
+		///Now the robot should move up
+		MainRotateLeft rotateup = currentRobot.GetComponent<MainRotateLeft> ();
+		AddAction (rotateup);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);	
+
+		//Now the robot should move down
+		MainRotateRight rotatedown = currentRobot.GetComponent<MainRotateRight> ();
+		AddAction (rotatedown);
+		AddAction (rotatedown);
+		AddAction (forward);
+		AddAction (forward);
+		AddAction (forward);
+
+		//executes actions
+		ExecuteActions ();
+
+		//retrieve the actions & testing
+		/*eventSystem = GameObject.FindGameObjectWithTag ("GameController");
+		UIControl listofactions = eventSystem.GetComponent<UIControl> ();
+		listofactions.ButtonPress ("Action 1");
+		listofactions.ButtonPress ("Action 2");
+		listofactions.ButtonPress ("Action 3");
+		print ("printing actions");
+		List<GameObject> list = listofactions.Queue ();
+		for (int i = 0; i < list.Count; i++) {
+
+			///print out the text in the button - not working
+			//print (list[i].);
+		}*/
+	}
+
+>>>>>>> Stashed changes
 	/// <summary>
 	/// Adds the action to the action list.
 	/// </summary>

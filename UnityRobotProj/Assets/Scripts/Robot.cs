@@ -10,6 +10,7 @@ public class Robot : MonoBehaviour, IRobot {
 	public Vector3 initialPosition;// = new Vector3(0,0,0);
 	public float moveDistance = 1f;
 	private Vector3 currentPosition;
+	private float finalMoveDistance = 0f;
 
 	//Dx and Dy indicate the direction the robot is facing
 	//With dx = 1 and dy = 0 the robot is facing right and
@@ -78,11 +79,13 @@ public class Robot : MonoBehaviour, IRobot {
 
 		/// If robot is moving left or right
 		if ((dx == 1 || dx == -1) && dy == 0) {
-			transform.Translate (newMoveDistance,currentPosition.y, Time.deltaTime*moveDistance);
+			transform.Translate (newMoveDistance,0, Time.deltaTime*moveDistance);
 		}
 		//if robot is moving up or down
 		if ((dy == 1 || dy == -1) && dx == 0) {
-			transform.Translate (currentPosition.x, newMoveDistance, Time.deltaTime * moveDistance);
+			Debug.Log("dx: " + dx);
+			Debug.Log("dy: " + dy);
+			transform.Translate (0, newMoveDistance, Time.deltaTime * moveDistance);
 		}
 		//transform.Translate (nextX, nextY, 0);
 		print (currentPosition);
