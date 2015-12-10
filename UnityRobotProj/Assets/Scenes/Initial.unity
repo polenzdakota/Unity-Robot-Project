@@ -1080,8 +1080,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1025297365}
-        m_MethodName: ExecuteActions
+      - m_Target: {fileID: 1025297360}
+        m_MethodName: Execute
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1537,6 +1537,7 @@ MonoBehaviour:
   TestButton: {fileID: 109972, guid: 35e199573ac2abc418f1a4cd9a866598, type: 2}
   command: {fileID: 1025297359}
   currentRobot: {fileID: 479059226}
+  failWindow: {fileID: 0}
 --- !u!114 &1025297361
 MonoBehaviour:
   m_ObjectHideFlags: 0

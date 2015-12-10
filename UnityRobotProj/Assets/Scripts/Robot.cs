@@ -11,6 +11,7 @@ public class Robot : MonoBehaviour, IRobot {
 	public float moveDistance = 1f;
 	private static Vector3 currentPosition;
 	private static Vector3 nextPositionToGo;
+	private static Vector3 targetPosition;
 
 	//Dx and Dy indicate the direction the robot is facing
 	//With dx = 1 and dy = 0 the robot is facing right and
@@ -23,11 +24,35 @@ public class Robot : MonoBehaviour, IRobot {
 	void Start () {
 		currentPosition = playerPosition.transform.position;//initialPosition;
 		initialPosition = playerPosition.transform.position;
+		targetPosition = initialPosition;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		MoveTowardsTarget ();
+	}
+	private void MoveTowardsTarget() {
+		//the speed, in units per second, we want to move towards the target
+		float speed = 5;
+		//move towards the center of the world (or where ever you like)
 
+		
+		Vector3 currentPosition = this.transform.position;
+		//first, check to see if we're close enough to the target
+		if (Vector3.Distance (currentPosition, targetPosition) > .1f) { 
+			Vector3 directionOfTravel = targetPosition - currentPosition;
+			//now normalize the direction, since we only want the direction information
+			directionOfTravel.Normalize ();
+			//scale the movement on each axis by the directionOfTravel vector components
+			
+			transform.Translate (
+				(directionOfTravel.x * speed * Time.deltaTime),
+				(directionOfTravel.y * speed * Time.deltaTime),
+				(directionOfTravel.z * speed * Time.deltaTime),
+				Space.World);
+		} else {
+			transform.position = targetPosition;
+		}
 	}
 
 	void OnCollisionEnter (Collision col)
@@ -51,7 +76,11 @@ public class Robot : MonoBehaviour, IRobot {
 		//Sets initial dx and dy
 		dx = 1;
 		dy = 0;
+<<<<<<< HEAD
 		//print ("dy = " + dy);
+=======
+		targetPosition = initialPosition;
+>>>>>>> origin/master
 	}
 
 	/// <summary>
@@ -61,52 +90,26 @@ public class Robot : MonoBehaviour, IRobot {
 	/// <c>false</c>
 	public bool MoveForward() {
 		Debug.Log ("dx: " + dx + "dy: " + dy);
+		currentPosition = transform.position;
 		float nextX = currentPosition.x + (dx * moveDistance);
 		float nextY = currentPosition.y + (dy * moveDistance);
 		float newMoveDistance = 0;
-		/// Need to check the four conditions to see if move is going left, right, up or down
-		/// If not moving up or down
-		if (dx == 1 || dx == -1) {
-			/// Going right
-			if(dx == 1){
-				newMoveDistance += moveDistance;
-			}
-			/// Going left
-			if(dx == -1){
-				newMoveDistance += moveDistance * -1;
-			}
-		}
-		/// If not moving left or right
-		if (dy == 1 || dy == -1) {
-			/// Going up
-			if(dy == 1){
-				newMoveDistance += moveDistance;
-			}
-			/// Going down
-			if(dy == -1){
-				newMoveDistance += moveDistance * -1;
-			}
-		}
 
 		Vector3 vectorCheck = new Vector3 (nextX, nextY, 0);
 		if (!GameBoard.PositionIsValid (vectorCheck)) {
 			return false;
 		}
-		//print ("Next X coordinate: "+nextX);
-		currentPosition.Set (nextX, nextY, 0);
 
-		/// If robot is moving left or right
-		if ((dx == 1 || dx == -1) && dy == 0) {
-			transform.Translate (newMoveDistance,0, 0);
-			Update();
-		}
-		//if robot is moving up or down
-		if ((dy == 1 || dy == -1) && dx == 0) {
-			transform.Translate (0, newMoveDistance, 0);
-			Update();
-		}
+		Vector3 next = new Vector3 (nextX, nextY);
+		targetPosition = next;
+
 		//transform.Translate (nextX, nextY, 0);
+<<<<<<< HEAD
 		//print (currentPosition);
+=======
+		print ("target pos: " + targetPosition);
+		print ("Current pos: " +currentPosition);
+>>>>>>> origin/master
 
 		return true;
 	}

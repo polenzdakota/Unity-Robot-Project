@@ -11,9 +11,12 @@ public class UIControl : MonoBehaviour {
 	public GameObject TestButton;
 	public GameObject command;
 	public GameObject currentRobot;
+	public GameObject failWindow;
+	private bool inPlay;
 	private List<GameObject> queuedActions = new List<GameObject>();
 
 	void start() {
+		inPlay = false;
 	}
 
 	/// <summary>
@@ -21,25 +24,25 @@ public class UIControl : MonoBehaviour {
 	/// </summary>
 	/// <param name="strAction">String action.</param>
 	public void ButtonPress(string strAction) {
-		print ("Trigger with action: " + strAction);
-		Vector3 dumb = new Vector3 (0, 0, 0);
-		Quaternion stuff = new Quaternion (0,0,0,0);
-		GameObject newButton = Instantiate (TestButton, dumb, stuff) as GameObject;
-		newButton.transform.SetParent (actionPanel.transform);
+		if (!inPlay) {
+			Vector3 dumb = new Vector3 (0, 0, 0);
+			Quaternion stuff = new Quaternion (0, 0, 0, 0);
+			GameObject newButton = Instantiate (TestButton, dumb, stuff) as GameObject;
+			newButton.transform.SetParent (actionPanel.transform);
 
-		newButton.GetComponentInChildren<Text>().text = strAction;
-		queuedActions.Add (newButton);
+			newButton.GetComponentInChildren<Text> ().text = strAction;
+			queuedActions.Add (newButton);
 
-		if (strAction.Equals ("forward")) {
-			print("trigger");
-			MainMoveForward forward = currentRobot.GetComponent<MainMoveForward>();
-			command.GetComponent<Command>().AddAction(forward);
-		} else if (strAction.Equals ("right")) {
-			MainRotateRight right = currentRobot.GetComponent<MainRotateRight>();
-			command.GetComponent<Command>().AddAction(right);
-		} else if(strAction.Equals("left")) {
-			MainRotateLeft left = currentRobot.GetComponent<MainRotateLeft>();
-			command.GetComponent<Command>().AddAction(left);
+			if (strAction.Equals ("forward")) {
+				MainMoveForward forward = currentRobot.GetComponent<MainMoveForward> ();
+				command.GetComponent<Command> ().AddAction (forward);
+			} else if (strAction.Equals ("right")) {
+				MainRotateRight right = currentRobot.GetComponent<MainRotateRight> ();
+				command.GetComponent<Command> ().AddAction (right);
+			} else if (strAction.Equals ("left")) {
+				MainRotateLeft left = currentRobot.GetComponent<MainRotateLeft> ();
+				command.GetComponent<Command> ().AddAction (left);
+			}
 		}
 
 
@@ -51,9 +54,15 @@ public class UIControl : MonoBehaviour {
 		return queuedActions;
 	}
 
+	public void Execute() {
+		inPlay = true;
+		command.GetComponent<Command> ().ExecuteActions ();
+	}
+
 	public void Restart() {
 		ClearActions ();
 		currentRobot.GetComponent<Robot> ().SetInitialPosition ();
+		inPlay = false;
 	}
 
 	public void ClearActions() {
