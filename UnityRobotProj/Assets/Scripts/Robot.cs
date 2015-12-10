@@ -80,6 +80,12 @@ public class Robot : MonoBehaviour, IRobot {
 			//Destroy(col.gameObject);
 			Application.LoadLevel("RealLevel1");
 		}
+		if(col.gameObject.tag == "LoadLevel2")
+		{
+			print ("Level Completed");
+			//Destroy(col.gameObject);
+			Application.LoadLevel("Level 2");
+		}
 		if(col.gameObject.tag == "Win")
 		{
 			print ("Level Completed");
