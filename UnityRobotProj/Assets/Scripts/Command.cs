@@ -10,6 +10,7 @@ public class Command : MonoBehaviour {
 	private List<IActions> actions;
 	private List<IRobot> robots;
 	//public List<Robot> robots;
+	private GameObject eventSystem;
 
 	void Start () {
 		actions = new List<IActions> ();
@@ -18,6 +19,9 @@ public class Command : MonoBehaviour {
 		//Test data
 		MainMoveForward forward = currentRobot.GetComponent<MainMoveForward>();
 		AddAction (forward);
+		//AddAction (forward);
+		//AddAction (forward);
+		/*AddAction (forward);
 		AddAction (forward);
 		AddAction (forward);
 		AddAction (forward);
@@ -26,16 +30,31 @@ public class Command : MonoBehaviour {
 		AddAction (forward);
 		AddAction (forward);
 		AddAction (forward);
-		AddAction (forward);
-		AddAction (forward);
-		AddAction (forward);
-		AddAction (forward);
+		AddAction (forward);*/
 
-
+		/// Now the robot should move left
+		MainRotateRight rotateright = currentRobot.GetComponent<MainRotateRight> ();
+		AddAction (rotateright);
+		AddAction (rotateright);
+		AddAction (forward); 
+		AddAction (forward); 
+		AddAction (forward); 
 
 		ExecuteActions ();
 
+		//retrieve the actions & testing
+		eventSystem = GameObject.FindGameObjectWithTag ("GameController");
+		UIControl listofactions = eventSystem.GetComponent<UIControl> ();
+		listofactions.ButtonPress ("Action 1");
+		listofactions.ButtonPress ("Action 2");
+		listofactions.ButtonPress ("Action 3");
+		print ("printing actions");
+		List<GameObject> list = listofactions.Queue ();
+		for (int i = 0; i < list.Count; i++) {
 
+			///print out the text in the button - not working
+			//print (list[i].);
+		}
 	}
 
 	/// <summary>
@@ -59,9 +78,12 @@ public class Command : MonoBehaviour {
 	/// Executes the actions in the action list.
 	/// </summary>
 	public void ExecuteActions() {
+		print ("enter");
 		foreach (IActions action in actions) {
+			print ("step");
 			bool valid = action.InvokeAction();
 			if (!valid) {
+				print ("fail");
 				TriggerFail();
 			}
 		}

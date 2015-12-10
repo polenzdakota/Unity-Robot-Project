@@ -13,7 +13,7 @@ public class MainMoveForward : MonoBehaviour, IActions {
 	void Start () {
 		//mainRobot = GameObject.FindGameObjectWithTag ("Player");
 		mainRobot = GameObject.FindGameObjectWithTag ("Player");//GameObject.Find ("mainRobotTest");
-		Debug.Log (mainRobot.tag);
+		//Debug.Log (mainRobot.tag);
 		initialPos = mainRobot.GetComponent<Robot> ().GetPosition ();
 		Debug.Log (initialPos);
 	}

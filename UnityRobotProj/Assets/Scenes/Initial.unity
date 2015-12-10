@@ -216,6 +216,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1 &479059226 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 133966, guid: bc2b89287c0ec404986b70ad4b8ad1e2, type: 2}
+  m_PrefabInternal: {fileID: 1668242961}
+--- !u!114 &479059227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479059226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2189f0285f004947a71f3692544f16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &479059228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479059226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cddddf625e1f204d97952ef84e458e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRobot: {fileID: 133966, guid: bc2b89287c0ec404986b70ad4b8ad1e2, type: 2}
 --- !u!1 &743725240
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,9 +592,10 @@ GameObject:
   - 114: {fileID: 1025297362}
   - 114: {fileID: 1025297361}
   - 114: {fileID: 1025297360}
+  - 114: {fileID: 1025297365}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -659,6 +687,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1025297365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025297359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb8f8bd10d69134fbdfff741fe28ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRobot: {fileID: 0}
 --- !u!1 &1226598091
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +947,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 133966, guid: bc2b89287c0ec404986b70ad4b8ad1e2, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416414, guid: bc2b89287c0ec404986b70ad4b8ad1e2, type: 2}
+      propertyPath: playerPosition
+      value: 
+      objectReference: {fileID: 479059226}
+    - target: {fileID: 11416414, guid: bc2b89287c0ec404986b70ad4b8ad1e2, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416414, guid: bc2b89287c0ec404986b70ad4b8ad1e2, type: 2}
+      propertyPath: moveDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc2b89287c0ec404986b70ad4b8ad1e2, type: 2}
   m_IsPrefabParent: 0
@@ -978,7 +1034,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

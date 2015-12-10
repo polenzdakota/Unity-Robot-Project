@@ -8,23 +8,27 @@ using System.Collections;
 public class Robot : MonoBehaviour, IRobot {
 	public GameObject playerPosition;
 	public Vector3 initialPosition;// = new Vector3(0,0,0);
-	public float moveDistance = 100;
+	public float moveDistance = 1f;
 	private Vector3 currentPosition;
 
 	//Dx and Dy indicate the direction the robot is facing
 	//With dx = 1 and dy = 0 the robot is facing right and
 	//will move in that direction with a move forward command
-	public int dx = 1;
-	public int dy = 0;
+	public static int dx = 1;
+	public static int dy = 0;
+	/// </summary>
 
 	// Use this for initialization
 	void Start () {
 		currentPosition = playerPosition.transform.position;//initialPosition;
+		//dx = 1;
+		//dy = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
+
 	}
 
 	/// <summary>
@@ -33,16 +37,54 @@ public class Robot : MonoBehaviour, IRobot {
 	/// <returns>true</returns>
 	/// <c>false</c>
 	public bool MoveForward() {
+		Debug.Log ("dx: " + dx + "dy: " + dy);
 		float nextX = currentPosition.x + (dx * moveDistance);
 		float nextY = currentPosition.y + (dy * moveDistance);
+		float newMoveDistance = 0;
+		/// Need to check the four conditions to see if move is going left, right, up or down
+		/// If not moving up or down
+		if (dx == 1 || dx == -1) {
+			/// Going right
+			if(dx == 1){
+				Debug.Log("moving right");
+				newMoveDistance += moveDistance;
+			}
+			/// Going left
+			if(dx == -1){
+				Debug.Log("moving left");
+				newMoveDistance += moveDistance * -1;
+			}
+		}
+		/// If not moving left or right
+		if (dy == 1 || dy == -1) {
+			/// Going up
+			if(dy == 1){
+				Debug.Log("moving up");
+				newMoveDistance += moveDistance;
+			}
+			/// Going down
+			if(dy == -1){
+				Debug.Log("moving down");
+				newMoveDistance += moveDistance * -1;
+			}
+		}
+
 		Vector3 vectorCheck = new Vector3 (nextX, nextY, 0);
 		if (!GameBoard.PositionIsValid (vectorCheck)) {
 			return false;
 		}
-		float speed = 10.0f;
-		float step = speed * Time.deltaTime;
+		//print ("Next X coordinate: "+nextX);
 		currentPosition.Set (nextX, nextY, 0);
-		transform.position = Vector3.MoveTowards(transform.position, currentPosition, step);
+
+		/// If robot is moving left or right
+		if ((dx == 1 || dx == -1) && dy == 0) {
+			transform.Translate (newMoveDistance,currentPosition.y, Time.deltaTime*moveDistance);
+		}
+		//if robot is moving up or down
+		if ((dy == 1 || dy == -1) && dx == 0) {
+			transform.Translate (currentPosition.x, newMoveDistance, Time.deltaTime * moveDistance);
+		}
+		//transform.Translate (nextX, nextY, 0);
 		print (currentPosition);
 
 		return true;
@@ -52,9 +94,41 @@ public class Robot : MonoBehaviour, IRobot {
 	/// Rotates the robot right.
 	/// </summary>
 	public void RotateRight() {
-		int tmp = dy;
-		dy = -dx;
-		dx = tmp;
+		Debug.Log("Rotating right");
+		///check the position
+		/// If facing right, face down
+		bool turn = false;
+		if (dx == 1 && turn == false) {
+			Debug.Log("facing down now");
+			dy = -dx;
+			dx = 0;
+			turn = true;
+		}
+		/// If facing down, face left
+		if (dx == 0 && dy == -1 && turn == false) {
+			Debug.Log("facing left now");
+			dx = dy;
+			dy = 0;
+			turn = true;
+			Debug.Log (dx);
+			Debug.Log (dy);
+		}
+		/// If facing left, face up
+		if (dx == -1 && turn == false) {
+			dy = -dx;
+			dx = 0;
+			turn = true;
+		}
+		/// If facing up, face right
+		if (dx == 0 && dy == 1 && turn == false) {
+			dx = dy;
+			dy = 0;
+			turn = true;
+		}
+
+		//int tmp = dy;
+		//dy = -dx;
+		//dx = tmp;
 		//TODO add rotation for the robot in the scene using quaterion.
 	}
 

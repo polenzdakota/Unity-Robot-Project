@@ -28,7 +28,10 @@ public class UIControl : MonoBehaviour {
 		//TODO options for multiple buttons. We can use the string paran to 
 		//     Differentiate between the actions.
 	}
-
+	//return the current list of queued actions
+	public List<GameObject> Queue(){
+		return queuedActions;
+	}
 	public void ClearActions() {
 		//TODO clear actions from list in Command
 		foreach (GameObject button in queuedActions) {
