@@ -6,6 +6,9 @@ TagManager:
   tags:
   - New Tag
   - Win
+  - Death
+  - LoadLevel2
+  - LoadLevel1
   layers:
   - Default
   - TransparentFX
