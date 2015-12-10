@@ -12,7 +12,7 @@ public class Robot : MonoBehaviour, IRobot {
 	private static Vector3 currentPosition;
 	private static Vector3 nextPositionToGo;
 	private static Vector3 targetPosition;
-
+	private bool collision = false;
 	//Dx and Dy indicate the direction the robot is facing
 	//With dx = 1 and dy = 0 the robot is facing right and
 	//will move in that direction with a move forward command
@@ -30,6 +30,10 @@ public class Robot : MonoBehaviour, IRobot {
 	// Update is called once per frame
 	void Update () {
 		MoveTowardsTarget ();
+	}
+	private bool GetCollision(){
+		return collision;
+
 	}
 	private void MoveTowardsTarget() {
 		//the speed, in units per second, we want to move towards the target
@@ -61,6 +65,7 @@ public class Robot : MonoBehaviour, IRobot {
 		{
 			print ("Collision hit!");
 			//Destroy(col.gameObject);
+			collision = true;
 		}
 		if(col.gameObject.tag == "Win")
 		{
@@ -86,24 +91,27 @@ public class Robot : MonoBehaviour, IRobot {
 	/// <returns>true</returns>
 	/// <c>false</c>
 	public bool MoveForward() {
-		Debug.Log ("dx: " + dx + "dy: " + dy);
-		currentPosition = transform.position;
-		float nextX = currentPosition.x + (dx * moveDistance);
-		float nextY = currentPosition.y + (dy * moveDistance);
-		float newMoveDistance = 0;
+		if (collision == false) {
+			Debug.Log ("dx: " + dx + "dy: " + dy);
+			currentPosition = transform.position;
+			float nextX = currentPosition.x + (dx * moveDistance);
+			float nextY = currentPosition.y + (dy * moveDistance);
+			float newMoveDistance = 0;
 
-		Vector3 vectorCheck = new Vector3 (nextX, nextY, 0);
-		if (!GameBoard.PositionIsValid (vectorCheck)) {
+			Vector3 vectorCheck = new Vector3 (nextX, nextY, 0);
+			if (!GameBoard.PositionIsValid (vectorCheck)) {
+				return false;
+			}
+
+			Vector3 next = new Vector3 (nextX, nextY);
+			targetPosition = next;
+			print ("target pos: " + targetPosition);
+			print ("Current pos: " + currentPosition);
+	
+
+			return true;
+		} else
 			return false;
-		}
-
-		Vector3 next = new Vector3 (nextX, nextY);
-		targetPosition = next;
-		print ("target pos: " + targetPosition);
-		print ("Current pos: " +currentPosition);
-
-
-		return true;
 	}
 
 	/// <summary>
