@@ -141,6 +141,9 @@ public class Command : MonoBehaviour {
 		}
 	}
 
+	public void ClearActions() {
+	}
+
 	/// <summary>
 	/// Removes the given action.
 	/// </summary>

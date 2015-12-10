@@ -9,7 +9,12 @@ using System.Collections.Generic;
 public class UIControl : MonoBehaviour {
 	public GameObject actionPanel;
 	public GameObject TestButton;
+	public GameObject command;
+	public GameObject currentRobot;
 	private List<GameObject> queuedActions = new List<GameObject>();
+
+	void start() {
+	}
 
 	/// <summary>
 	/// Action done when a button is pressed.
@@ -25,6 +30,19 @@ public class UIControl : MonoBehaviour {
 		newButton.GetComponentInChildren<Text>().text = strAction;
 		queuedActions.Add (newButton);
 
+		if (strAction.Equals ("forward")) {
+			print("trigger");
+			MainMoveForward forward = currentRobot.GetComponent<MainMoveForward>();
+			command.GetComponent<Command>().AddAction(forward);
+		} else if (strAction.Equals ("right")) {
+			MainRotateRight right = currentRobot.GetComponent<MainRotateRight>();
+			command.GetComponent<Command>().AddAction(right);
+		} else if(strAction.Equals("left")) {
+			MainRotateLeft left = currentRobot.GetComponent<MainRotateLeft>();
+			command.GetComponent<Command>().AddAction(left);
+		}
+
+
 		//TODO options for multiple buttons. We can use the string paran to 
 		//     Differentiate between the actions.
 	}
@@ -32,16 +50,16 @@ public class UIControl : MonoBehaviour {
 	public List<GameObject> Queue(){
 		return queuedActions;
 	}
+
 	public void ClearActions() {
 		//TODO clear actions from list in Command
+		command.GetComponent<Command> ().ClearActions ();
 		foreach (GameObject button in queuedActions) {
-
 			//Horrible code but I don't care
 			if (button != null) {
 				button.GetComponent<ActionButton>().OnPress();
 			}
 		}
-
 	}
 
 	/// <summary>
