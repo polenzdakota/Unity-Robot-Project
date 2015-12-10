@@ -13,12 +13,6 @@ public class Command : MonoBehaviour {
 	private GameObject eventSystem;
 
 
-	void Update(){
-		if (actions != null) {
-			ExecuteActions ();
-		}
-	}
-
 	void Start () {
 		actions = new List<IActions> ();
 		currentRobot = GameObject.FindGameObjectWithTag ("Player");
@@ -61,21 +55,8 @@ public class Command : MonoBehaviour {
 		AddAction (forward);
 
 		//executes actions
+		ExecuteActions ();
 
-
-		//retrieve the actions & testing
-		/*eventSystem = GameObject.FindGameObjectWithTag ("GameController");
-		UIControl listofactions = eventSystem.GetComponent<UIControl> ();
-		listofactions.ButtonPress ("Action 1");
-		listofactions.ButtonPress ("Action 2");
-		listofactions.ButtonPress ("Action 3");
-		print ("printing actions");
-		List<GameObject> list = listofactions.Queue ();
-		for (int i = 0; i < list.Count; i++) {
-
-			///print out the text in the button - not working
-			//print (list[i].);
-		}*/
 	}
 	
 	/// <summary>
