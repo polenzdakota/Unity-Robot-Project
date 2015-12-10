@@ -38,7 +38,8 @@ public class Robot : MonoBehaviour, IRobot {
 	void Update () {
 		MoveTowardsTarget ();
 	}
-	private bool GetCollision(){
+
+	public bool GetCollision(){
 		return collision;
 
 	}

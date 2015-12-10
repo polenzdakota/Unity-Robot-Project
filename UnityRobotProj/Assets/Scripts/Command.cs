@@ -62,8 +62,10 @@ public class Command : MonoBehaviour {
 
 		yield return new WaitForSeconds (sec);
 		action.InvokeAction ();
-		audioSource.clip = sound;
-		audioSource.Play ();
+		if (!currentRobot.GetComponent<Robot> ().GetCollision()) {
+			audioSource.clip = sound;
+			audioSource.Play ();
+		}
 	}
 
 	/// <summary>
