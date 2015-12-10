@@ -9,54 +9,14 @@ public class Command : MonoBehaviour {
 	public GameObject currentRobot;
 	private List<IActions> actions;
 	private List<IRobot> robots;
-	//public List<Robot> robots;
 	private GameObject eventSystem;
-
+	public AudioClip sound;
+	private AudioSource audioSource;
 
 	void Start () {
 		actions = new List<IActions> ();
 		currentRobot = GameObject.FindGameObjectWithTag ("Player");
-
-		//Test data
-		/*MainMoveForward forward = currentRobot.GetComponent<MainMoveForward>();
-		AddAction (forward);
-
-		/// Now the robot should move left
-		MainRotateRight rotateright = currentRobot.GetComponent<MainRotateRight> ();
-		AddAction (rotateright);
-		AddAction (rotateright);
-		AddAction (forward); 
-		AddAction (forward); 
-		AddAction (forward); 
-		AddAction (forward);
-
-		//Now the robot should move right
-		MainRotateLeft rotateleft = currentRobot.GetComponent<MainRotateLeft> ();
-		AddAction (rotateleft);
-		AddAction (rotateleft);
-		AddAction (forward); 
-		AddAction (forward); 
-		AddAction (forward);
-		AddAction (forward);
-
-		///Now the robot should move up
-		MainRotateLeft rotateup = currentRobot.GetComponent<MainRotateLeft> ();
-		AddAction (rotateup);
-		AddAction (forward);
-		AddAction (forward);
-		AddAction (forward);	
-
-		//Now the robot should move down
-		MainRotateRight rotatedown = currentRobot.GetComponent<MainRotateRight> ();
-		AddAction (rotatedown);
-		AddAction (rotatedown);
-		AddAction (forward);
-		AddAction (forward);
-		AddAction (forward);
-	
-		//executes actions
-		ExecuteActions ();
-		*/
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	/// <summary>
@@ -101,7 +61,9 @@ public class Command : MonoBehaviour {
 	IEnumerator wait(int sec, IActions action) {
 		print (Time.time);
 		yield return new WaitForSeconds (sec);
-		action.InvokeAction();
+		action.InvokeAction ();
+		audioSource.clip = sound;
+		audioSource.Play ();
 		print (Time.time);
 	}
 

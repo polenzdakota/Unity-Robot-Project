@@ -30,6 +30,15 @@ public class Robot : MonoBehaviour, IRobot {
 
 	}
 
+	void OnCollisionEnter (Collision col)
+	{
+		if(col.gameObject.name == "Trigger 1")
+		{
+			print ("Collision hit!");
+			Destroy(col.gameObject);
+		}
+	}
+
 	public void SetInitialPosition() {
 		transform.position = initialPosition;
 
@@ -82,12 +91,12 @@ public class Robot : MonoBehaviour, IRobot {
 
 		/// If robot is moving left or right
 		if ((dx == 1 || dx == -1) && dy == 0) {
-			transform.Translate (newMoveDistance,0, Time.deltaTime*moveDistance);
+			transform.Translate (newMoveDistance,0, 0);
 			Update();
 		}
 		//if robot is moving up or down
 		if ((dy == 1 || dy == -1) && dx == 0) {
-			transform.Translate (0, newMoveDistance, Time.deltaTime * moveDistance);
+			transform.Translate (0, newMoveDistance, 0);
 			Update();
 		}
 		//transform.Translate (nextX, nextY, 0);
