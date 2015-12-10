@@ -125,21 +125,41 @@ public class Robot : MonoBehaviour, IRobot {
 			dy = 0;
 			turn = true;
 		}
-
-		//int tmp = dy;
-		//dy = -dx;
-		//dx = tmp;
-		//TODO add rotation for the robot in the scene using quaterion.
 	}
 
 	/// <summary>
 	/// Rotates the robot left.
 	/// </summary>
 	public void RotateLeft() {
-		int tmp = dx;
-		dx = -dy;
-		dy = tmp;
-		//TODO add rotation for the robot in the scene using quaterion.
+		Debug.Log("Rotating left");
+		///check the position
+		/// If facing right, face up
+		bool turn = false;
+		if (dx == 1 && turn == false) {
+			Debug.Log("facing down now");
+			dy = dx;
+			dx = 0;
+			turn = true;
+		}
+		/// If facing up, face left
+		if (dx == 0 && dy == 1 && turn == false) {
+			Debug.Log("facing left now");
+			dx = -dy;
+			dy = 0;
+			turn = true;
+		}
+		/// If facing left, face down
+		if (dx == -1 && turn == false) {
+			dy = dx;
+			dx = 0;
+			turn = true;
+		}
+		/// If facing up, face right
+		if (dx == 0 && dy == -1 && turn == false) {
+			dx = -dy;
+			dy = 0;
+			turn = true;
+		}
 	}
 
 	/// <summary>

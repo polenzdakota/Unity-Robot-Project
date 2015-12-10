@@ -242,7 +242,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cddddf625e1f204d97952ef84e458e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainRobot: {fileID: 133966, guid: bc2b89287c0ec404986b70ad4b8ad1e2, type: 2}
+--- !u!114 &479059229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479059226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c8870e9e7f5bd438d48aacccc23de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &743725240
 GameObject:
   m_ObjectHideFlags: 0

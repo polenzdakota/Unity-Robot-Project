@@ -39,6 +39,16 @@ public class Command : MonoBehaviour {
 		AddAction (forward); 
 		AddAction (forward); 
 		AddAction (forward); 
+		AddAction (forward);
+
+		//Now the robot should move right
+		MainRotateLeft rotateleft = currentRobot.GetComponent<MainRotateLeft> ();
+		AddAction (rotateleft);
+		AddAction (rotateleft);
+		AddAction (forward); 
+		AddAction (forward); 
+		AddAction (forward);
+		AddAction (forward);
 
 		ExecuteActions ();
 
