@@ -76,11 +76,8 @@ public class Robot : MonoBehaviour, IRobot {
 		//Sets initial dx and dy
 		dx = 1;
 		dy = 0;
-<<<<<<< HEAD
-		//print ("dy = " + dy);
-=======
 		targetPosition = initialPosition;
->>>>>>> origin/master
+
 	}
 
 	/// <summary>
@@ -102,14 +99,9 @@ public class Robot : MonoBehaviour, IRobot {
 
 		Vector3 next = new Vector3 (nextX, nextY);
 		targetPosition = next;
-
-		//transform.Translate (nextX, nextY, 0);
-<<<<<<< HEAD
-		//print (currentPosition);
-=======
 		print ("target pos: " + targetPosition);
 		print ("Current pos: " +currentPosition);
->>>>>>> origin/master
+
 
 		return true;
 	}
