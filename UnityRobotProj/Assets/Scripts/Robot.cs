@@ -12,6 +12,12 @@ public class Robot : MonoBehaviour, IRobot {
 	private static Vector3 currentPosition;
 	private static Vector3 nextPositionToGo;
 	private static Vector3 targetPosition;
+	private static Sprite currentSprite;
+	public Sprite rightSprite;
+	public Sprite leftSprite;
+	public Sprite upSprite;
+	public Sprite downSprite;
+
 	private bool collision = false;
 	//Dx and Dy indicate the direction the robot is facing
 	//With dx = 1 and dy = 0 the robot is facing right and
@@ -25,6 +31,7 @@ public class Robot : MonoBehaviour, IRobot {
 		currentPosition = playerPosition.transform.position;//initialPosition;
 		initialPosition = playerPosition.transform.position;
 		targetPosition = initialPosition;
+		currentSprite = GetComponent<SpriteRenderer>().sprite;
 	}
 	
 	// Update is called once per frame
@@ -82,6 +89,7 @@ public class Robot : MonoBehaviour, IRobot {
 		dx = 1;
 		dy = 0;
 		targetPosition = initialPosition;
+		changeSprite ();
 
 	}
 
@@ -146,6 +154,7 @@ public class Robot : MonoBehaviour, IRobot {
 			dy = 0;
 			turn = true;
 		}
+		changeSprite();
 	}
 
 	/// <summary>
@@ -177,6 +186,19 @@ public class Robot : MonoBehaviour, IRobot {
 			dx = -dy;
 			dy = 0;
 			turn = true;
+		}
+		changeSprite();
+	}
+
+	public void changeSprite() {
+		if (dx == 1) {
+			GetComponent<SpriteRenderer>().sprite = rightSprite;
+		} else if (dx == -1) {
+			GetComponent<SpriteRenderer>().sprite = leftSprite;
+		} else if (dy == 1) {
+			GetComponent<SpriteRenderer>().sprite = upSprite;
+		} else {
+			GetComponent<SpriteRenderer>().sprite = downSprite;
 		}
 	}
 
@@ -214,5 +236,6 @@ public class Robot : MonoBehaviour, IRobot {
 	public void SetRotation(int[] rotation) {
 		dx = rotation [0];
 		dy = rotation [1];
+		changeSprite();
 	}
 }

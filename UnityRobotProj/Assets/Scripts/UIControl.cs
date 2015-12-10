@@ -19,6 +19,12 @@ public class UIControl : MonoBehaviour {
 		inPlay = false;
 	}
 
+	void update() {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.Quit();
+		}
+	}
+
 	/// <summary>
 	/// Action done when a button is pressed.
 	/// </summary>
