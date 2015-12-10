@@ -41,7 +41,7 @@ public class Command : MonoBehaviour {
 	/// </summary>
 	public void ExecuteActions() {
 		//print ("enter");
-		int secToWait = 1;
+		float secToWait = 0.5f;
 	
 		foreach (IActions action in actions) {
 			//bool valid = action.InvokeAction();
@@ -50,7 +50,7 @@ public class Command : MonoBehaviour {
 			//	TriggerFail();
 			//}
 			StartCoroutine(wait (secToWait, action));
-			secToWait += 1;
+			secToWait += 0.5f;
 		}
 		if (!GameBoard.GetCompletion()) {
 			TriggerFail();
@@ -58,7 +58,7 @@ public class Command : MonoBehaviour {
 
 	}
 
-	IEnumerator wait(int sec, IActions action) {
+	IEnumerator wait(float sec, IActions action) {
 
 		yield return new WaitForSeconds (sec);
 		action.InvokeAction ();
