@@ -81,17 +81,28 @@ public class Command : MonoBehaviour {
 	/// </summary>
 	public void ExecuteActions() {
 		print ("enter");
+		int secToWait = 1;
 		foreach (IActions action in actions) {
 			print ("step");
-			bool valid = action.InvokeAction();
-			if (!valid) {
-				print ("fail");
-				TriggerFail();
-			}
+			//bool valid = action.InvokeAction();
+			//if (!valid) {
+			//	print ("fail");
+			//	TriggerFail();
+			//}
+			StartCoroutine(wait (secToWait, action));
+			secToWait += 1;
 		}
 		if (!GameBoard.GetCompletion()) {
 			TriggerFail();
 		}
+
+	}
+
+	IEnumerator wait(int sec, IActions action) {
+		print (Time.time);
+		yield return new WaitForSeconds (sec);
+		action.InvokeAction();
+		print (Time.time);
 	}
 
 	/// <summary>

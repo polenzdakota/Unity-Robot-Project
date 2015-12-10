@@ -54,12 +54,10 @@ public class Robot : MonoBehaviour, IRobot {
 		if (dx == 1 || dx == -1) {
 			/// Going right
 			if(dx == 1){
-				Debug.Log("moving right");
 				newMoveDistance += moveDistance;
 			}
 			/// Going left
 			if(dx == -1){
-				Debug.Log("moving left");
 				newMoveDistance += moveDistance * -1;
 			}
 		}
@@ -67,12 +65,10 @@ public class Robot : MonoBehaviour, IRobot {
 		if (dy == 1 || dy == -1) {
 			/// Going up
 			if(dy == 1){
-				Debug.Log("moving up");
 				newMoveDistance += moveDistance;
 			}
 			/// Going down
 			if(dy == -1){
-				Debug.Log("moving down");
 				newMoveDistance += moveDistance * -1;
 			}
 		}
@@ -104,19 +100,16 @@ public class Robot : MonoBehaviour, IRobot {
 	/// Rotates the robot right.
 	/// </summary>
 	public void RotateRight() {
-		Debug.Log("Rotating right");
 		///check the position
 		/// If facing right, face down
 		bool turn = false;
 		if (dx == 1 && turn == false) {
-			Debug.Log("facing down now");
 			dy = -dx;
 			dx = 0;
 			turn = true;
 		}
 		/// If facing down, face left
 		if (dx == 0 && dy == -1 && turn == false) {
-			Debug.Log("facing left now");
 			dx = dy;
 			dy = 0;
 			turn = true;
@@ -141,19 +134,16 @@ public class Robot : MonoBehaviour, IRobot {
 	/// Rotates the robot left.
 	/// </summary>
 	public void RotateLeft() {
-		Debug.Log("Rotating left");
 		///check the position
 		/// If facing right, face up
 		bool turn = false;
 		if (dx == 1 && turn == false) {
-			Debug.Log("facing down now");
 			dy = dx;
 			dx = 0;
 			turn = true;
 		}
 		/// If facing up, face left
 		if (dx == 0 && dy == 1 && turn == false) {
-			Debug.Log("facing left now");
 			dx = -dy;
 			dy = 0;
 			turn = true;
