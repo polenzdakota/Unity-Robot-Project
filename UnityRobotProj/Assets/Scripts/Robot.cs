@@ -32,10 +32,16 @@ public class Robot : MonoBehaviour, IRobot {
 
 	void OnCollisionEnter (Collision col)
 	{
-		if(col.gameObject.name == "Trigger 1")
+		if(col.gameObject.tag == "Death")
 		{
 			print ("Collision hit!");
-			Destroy(col.gameObject);
+			//Destroy(col.gameObject);
+		}
+		if(col.gameObject.tag == "Win")
+		{
+			print ("Level Completed");
+			//Destroy(col.gameObject);
+			Application.LoadLevel("Gameover");
 		}
 	}
 
@@ -45,7 +51,7 @@ public class Robot : MonoBehaviour, IRobot {
 		//Sets initial dx and dy
 		dx = 1;
 		dy = 0;
-		print ("dy = " + dy);
+		//print ("dy = " + dy);
 	}
 
 	/// <summary>
@@ -100,7 +106,7 @@ public class Robot : MonoBehaviour, IRobot {
 			Update();
 		}
 		//transform.Translate (nextX, nextY, 0);
-		print (currentPosition);
+		//print (currentPosition);
 
 		return true;
 	}
