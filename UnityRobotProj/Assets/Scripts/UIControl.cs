@@ -25,7 +25,6 @@ public class UIControl : MonoBehaviour {
 	/// <param name="strAction">String action.</param>
 	public void ButtonPress(string strAction) {
 		if (!inPlay) {
-			print ("Trigger with action: " + strAction);
 			Vector3 dumb = new Vector3 (0, 0, 0);
 			Quaternion stuff = new Quaternion (0, 0, 0, 0);
 			GameObject newButton = Instantiate (TestButton, dumb, stuff) as GameObject;
@@ -35,7 +34,6 @@ public class UIControl : MonoBehaviour {
 			queuedActions.Add (newButton);
 
 			if (strAction.Equals ("forward")) {
-				print ("trigger");
 				MainMoveForward forward = currentRobot.GetComponent<MainMoveForward> ();
 				command.GetComponent<Command> ().AddAction (forward);
 			} else if (strAction.Equals ("right")) {

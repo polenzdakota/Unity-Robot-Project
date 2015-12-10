@@ -40,10 +40,8 @@ public class Command : MonoBehaviour {
 	/// Executes the actions in the action list.
 	/// </summary>
 	public void ExecuteActions() {
-		print ("enter");
 		int secToWait = 1;
 		foreach (IActions action in actions) {
-			print ("step");
 			//bool valid = action.InvokeAction();
 			//if (!valid) {
 			//	print ("fail");
@@ -59,12 +57,10 @@ public class Command : MonoBehaviour {
 	}
 
 	IEnumerator wait(int sec, IActions action) {
-		print (Time.time);
 		yield return new WaitForSeconds (sec);
 		action.InvokeAction ();
 		audioSource.clip = sound;
 		audioSource.Play ();
-		print (Time.time);
 	}
 
 	/// <summary>
