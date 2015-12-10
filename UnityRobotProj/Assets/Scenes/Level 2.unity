@@ -65,7 +65,6 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -85,6 +84,9 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!127 &5
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!1001 &13055915
 Prefab:
   m_ObjectHideFlags: 0
@@ -905,7 +907,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1329,6 +1330,14 @@ Prefab:
       propertyPath: currentRobot
       value: 
       objectReference: {fileID: 176264420}
+    - target: {fileID: 11408836, guid: 4a9817610ccae2e4298c738e46b9a066, type: 2}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 93918729593a5a64596b248c74f63a4f, type: 3}
+    - target: {fileID: 8211186, guid: 4a9817610ccae2e4298c738e46b9a066, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 93918729593a5a64596b248c74f63a4f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a9817610ccae2e4298c738e46b9a066, type: 2}
   m_IsPrefabParent: 0

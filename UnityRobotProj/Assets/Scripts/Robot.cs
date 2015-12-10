@@ -75,17 +75,19 @@ public class Robot : MonoBehaviour, IRobot {
 			//Destroy(col.gameObject);
 			collision = true;
 		}
+		//loads the first level
 		if(col.gameObject.tag == "LoadLevel1")
 		{
 			print ("Level Completed");
 			//Destroy(col.gameObject);
 			Application.LoadLevel("RealLevel1");
 		}
+		//Loads the second level
 		if(col.gameObject.tag == "LoadLevel2")
 		{
 			print ("Level Completed");
 			//Destroy(col.gameObject);
-			Application.LoadLevel("Level 2");
+			Application.LoadLevel("BeforeLevel2");
 		}
 		if(col.gameObject.tag == "Win")
 		{
